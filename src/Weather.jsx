@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useQuery} from "react-query";
+import ExtraInformation from "./ExtraInformation";
 
 const API_KEY = '5172e97124ff57be1b4c06bba102541a'
 const BASE_URL = 'https://api.openweathermap.org/'
@@ -34,8 +35,8 @@ function Weather(props) {
     })
 
     const formatTime = (seconds) => {
-        const date = (new Date(seconds*1000)).toTimeString()
-        return date.slice(0, 15) + ':' + date.slice(15, 17)
+        const date = (new Date(seconds * 1000)).toTimeString()
+        return [date.slice(0, 5), date.slice(9,15) + ':' + date.slice(15, 17)]
     }
     const firstLetterToUpperCase = (str) => {
         return str[0].toUpperCase() + str.slice(1, str.length)
@@ -51,17 +52,17 @@ function Weather(props) {
                        placeholder='Search for a city 🌍'
                 />
                 <button className='input-button'
-                        onClick={() => refetch()}> Let's go!
+                        onClick={() => refetch()}> 🚀
                 </button>
             </div>
-            { (status === 'loading') &&
+            {(status === 'loading') &&
                 <div className='empty loading'>
                     <p> Loading ⏳ </p>
                 </div>
             }
-            { (status === 'error') &&
+            {(status === 'error') &&
                 <div className='empty error'>
-                    <p> We haven't found such city 😢 </p>
+                    <p> Can't find the city 😢 </p>
                 </div>
             }
             {data &&
@@ -71,9 +72,8 @@ function Weather(props) {
                         <div className='gi-left'>
                             <h2 className='city'>{city.toUpperCase()}</h2>
                             <p className='description'>{firstLetterToUpperCase(data.weather[0].description)}</p>
-                            <div className='temp'>
+                            <div className='temp-container'>
                                 <p className='temp'>{Math.round(data.main.temp)}°</p>
-                                <p className='feels-like'>Feels like: {Math.round(data.main.feels_like)}°</p>
                             </div>
                         </div>
                         <div className='gi-right'>
@@ -83,21 +83,24 @@ function Weather(props) {
                     </div>
                     {/*EXTRA*/}
                     <div className='extra-information'>
-                        <div className='extra-instance'> 🌡️ Temperature
-                            range: {data.main.temp_min} - {data.main.temp_max}</div>
-                        <div className='extra-instance'>
-                            📏 Pressure: {Math.round(data.main.pressure / 1000 * 750.062)} mmHg
-                        </div>
-                        <div className='extra-instance'> 💧 Humidity: {data.main.humidity}% </div>
-                        <div className='extra-instance'>
-                            🌪️ Wind: {Math.round(data.wind.speed*2)/2} m/s
-                        </div>
-                        <div className='extra-instance'>
-                            🌄 Sunrise: {formatTime(data.sys.sunrise)}
-                        </div>
-                        <div className='extra-instance'>
-                            🌅 Sunset: {formatTime(data.sys.sunset)}
-                        </div>
+                        <ExtraInformation emoji='🌡️' prefix='Feels like' postfix=''>
+                            {Math.round(data.main.feels_like)}°
+                        </ExtraInformation>
+                        <ExtraInformation emoji='📏' prefix='Pressure' postfix='mmHg'>
+                            {Math.round(data.main.pressure / 1000 * 750.062)}
+                        </ExtraInformation>
+                        <ExtraInformation emoji='💧' prefix='Humidity' postfix='%'>
+                            {data.main.humidity}
+                        </ExtraInformation>
+                        <ExtraInformation emoji='🌪️' prefix='Wind' postfix='m/s'>
+                            {Math.round(data.wind.speed * 2) / 2}
+                        </ExtraInformation>
+                        <ExtraInformation emoji='🌄' prefix='Sunrise' postfix={formatTime(data.sys.sunrise)[1]}>
+                            {formatTime(data.sys.sunrise)[0]}
+                        </ExtraInformation>
+                        <ExtraInformation emoji='🌅' prefix='Sunset' postfix={formatTime(data.sys.sunset)[1]}>
+                            {formatTime(data.sys.sunset)[0]}
+                        </ExtraInformation>
                     </div>
                 </>
             }

@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Montserrat:wght@400;700&family=Work+Sans&display=swap');
+
 .custom-container {
     font-family: 'Montserrat';
 
-    margin: 20px auto;
-    width: 80%;
-    max-width: 1200px;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 1000px;
 }
 
 .input {
@@ -14,13 +15,13 @@
 }
 
 .input > input {
-    height: 40px;
-    padding-left: 10px;
+    height: 60px;
+    padding-left: 20px;
     flex-grow: 1;
     border-radius: 5px;
     background-color: rgba(234, 236, 239, 1);
     border: 0px solid white;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .input-button {
@@ -29,6 +30,7 @@
     width: 100px;
     border-radius: 5px;
     border: 0px solid white;
+    font-size: 1.5rem;
 }
 
 /*SCREENS*/
@@ -42,13 +44,11 @@
     justify-content: center;
     background-color: rgba(234, 236, 239, 1);
     color: rgba(32, 43, 59);
-    font-size: 1.5rem;
+    font-size: 3rem;
 }
-
 .error {
     background: linear-gradient(180deg, rgba(234, 236, 239, 1) 0%, rgba(255, 117, 117, 0.6) 50%, rgba(234, 236, 239, 1) 100%);
 }
-
 .dove {
     background-color: rgba(2, 150, 255, 0.6);
     font-size: 10rem;
@@ -66,23 +66,33 @@
     background-color: rgba(2, 150, 255, 0.6);
     color: whitesmoke;
 }
+.city {
+    font-size: 4rem;
+    font-weight: bold;
+}
+.description {
+    font-size: 1.5rem;
+}
+.temp {
+    font-size: 6rem;
+    margin-bottom: 0rem;
+}
 
 .gi-left {
     flex-grow: 1;
+    padding: 2rem 2rem 0 6rem;
 }
-
 .gi-right {
     width: 40%;
     max-width: 300px;
     max-height: 300px;
-    margin: 0 auto;
+    margin-right: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 0px;
     /*background: radial-gradient(rgba(2,150,255,1) 0%, rgba(234, 236, 239, 1) 70%, rgba(234, 236, 239, 1) 100%);*/
 }
-
 .gi-right > img {
     width: 200px;
 }
@@ -97,4 +107,29 @@
     border-radius: 5px;
     background-color: rgba(234, 236, 239, 1);
     color: rgba(32, 43, 59);
+}
+.extra-instance {
+    display: flex;
+    align-items: center;
+    padding: 0rem 2rem;
+}
+.emoji {
+    font-size: 4rem;
+    margin-right: 1rem;
+}
+.extra-text {
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+}
+.digits {
+    font-size: 2rem;
+}
+
+/*MEDIA QUERY*/
+@media screen and (max-width: 650px) {
+    * {
+        font-size: 10px;
+    }
 }
