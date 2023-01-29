@@ -13,7 +13,6 @@
     display: flex;
     gap: 10px;
 }
-
 .input > input {
     height: 60px;
     padding-left: 20px;
@@ -23,7 +22,6 @@
     border: 0px solid white;
     font-size: 1.4rem;
 }
-
 .input-button {
     background-color: rgba(2, 150, 255, 1);
     color: white;
@@ -131,5 +129,24 @@
 @media screen and (max-width: 650px) {
     * {
         font-size: 10px;
+    }
+    .input > input {
+        font-size: 2rem;
+    }
+    .input-button {
+        font-size: 2rem;
+    }
+    .general-information {
+        font-size: 10px;
+    }
+    .gi-left {
+        flex-grow: 1;
+        padding: 2rem 2rem 0 4rem;
+    }
+    .extra-information {
+        font-size: 10px;
+    }
+    .empty > p {
+        font-size: 1em;
     }
 }
