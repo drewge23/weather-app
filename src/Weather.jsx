@@ -86,7 +86,7 @@ function Weather(props) {
                         <ExtraInformation emoji='🌡️' prefix='Feels like' postfix=''>
                             {Math.round(data.main.feels_like)}°
                         </ExtraInformation>
-                        <ExtraInformation emoji='📏' prefix='Pressure' postfix='mmHg'>
+                        <ExtraInformation emoji='💆' prefix='Pressure' postfix='mmHg'>
                             {Math.round(data.main.pressure / 1000 * 750.062)}
                         </ExtraInformation>
                         <ExtraInformation emoji='💧' prefix='Humidity' postfix='%'>
